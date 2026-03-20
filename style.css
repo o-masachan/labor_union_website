@@ -72,6 +72,14 @@ section {
     background: #0d2a4d;
 }
 
+/* ボックス */
+.box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    background: #fafafa;
+    margin-bottom: 20px;
+}
+
 /* フッター */
 footer {
     background: #e0e0e0;
