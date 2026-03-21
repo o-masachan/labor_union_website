@@ -1,81 +1,72 @@
-/* 基本設定 */
-body {
-    margin: 0;
-    font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    background: #f5f7fa;
-    color: #333;
-    line-height: 1.7;
+body { margin:0; font-family: Arial, sans-serif; }
+
+header { background:#c00; color:#fff; padding:15px; }
+header h1 { margin:0; }
+
+nav { background:#eee; padding:10px; position:relative; }
+.menu-toggle { display:none; font-size:20px; background:none; border:none; }
+
+.nav-list { list-style:none; padding:0; margin:0; display:flex; gap:15px; }
+.nav-list a { text-decoration:none; color:#333; }
+
+/* スライダー */
+.slider { overflow:hidden; }
+.slides { position:relative; }
+.slide {
+  width:100%;
+  display:none;
+}
+.slide.active { display:block; }
+
+.main { display:flex; }
+.content { flex:3; padding:20px; }
+.sidebar { flex:1; background:#f5f5f5; padding:20px; }
+
+.section { margin-bottom:30px; }
+
+/* カードUI */
+.news-cards {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:15px;
 }
 
-/* ヘッダー */
-header {
-    background: #003366;
-    color: white;
-    padding: 15px 20px;
-    border-bottom: 4px solid #999;
+.card {
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:15px;
+  background:#fff;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  transition:0.3s;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 20px;
+.card:hover {
+  transform:translateY(-5px);
 }
 
-/* ナビ */
-nav {
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
+.card .date {
+  font-size:12px;
+  color:#888;
 }
 
-nav a {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #003366;
-    font-size: 14px;
-}
-
-/* メイン */
-main {
-    max-width: 900px;
-    margin: 30px auto;
-    background: white;
-    padding: 30px;
-}
-
-/* セクション */
-section {
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-}
-
-/* 見出し */
-h2 {
-    background: #f0f0f0;
-    padding: 10px;
-    border-left: 5px solid #003366;
-}
-
-/* box */
-.box {
-    border: 1px solid #ccc;
-    padding: 15px;
-    background: #fafafa;
-    margin-bottom: 20px;
-}
-
-/* フッター */
-footer {
-    background: #e0e0e0;
-    text-align: center;
-    padding: 20px;
-    font-size: 13px;
-}
+footer { background:#333; color:#fff; text-align:center; padding:10px; }
 
 /* スマホ対応 */
 @media (max-width: 768px) {
-    main {
-        margin: 10px;
-        padding: 20px;
-    }
+  .main { flex-direction: column; }
+  
+  .menu-toggle { display:block; }
+  
+  .nav-list {
+    display:none;
+    flex-direction:column;
+    gap:10px;
+    margin-top:10px;
+  }
+
+  .nav-list.active { display:flex; }
+
+  .news-cards {
+    grid-template-columns:1fr;
+  }
 }
