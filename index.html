@@ -125,50 +125,57 @@
 </footer>
 
 <script>
-// メニュー
-const toggle = document.querySelector('.menu-toggle');
-const navList = document.querySelector('.nav-list');
-toggle.addEventListener('click', () => navList.classList.toggle('active'));
+document.addEventListener('DOMContentLoaded', () => {
 
-// スライダー
-let current = 0;
-const slides = document.querySelectorAll('.slide');
-const dotsContainer = document.querySelector('.dots');
+  // メニュー
+  const toggle = document.querySelector('.menu-toggle');
+  const navList = document.querySelector('.nav-list');
 
-slides.forEach((_, i) => {
-  const dot = document.createElement('span');
-  dot.classList.add('dot');
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => showSlide(i));
-  dotsContainer.appendChild(dot);
+  if (toggle && navList) {
+    toggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  }
+
+  // スライダー
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.querySelector('.dots');
+
+  if (!slides.length || !dotsContainer) return;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => showSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(index) {
+    slides[current].classList.remove('active');
+
+    if (dots[current]) {
+      dots[current].classList.remove('active');
+    }
+
+    current = index;
+
+    slides[current].classList.add('active');
+
+    if (dots[current]) {
+      dots[current].classList.add('active');
+    }
+  }
+
+  setInterval(() => {
+    let next = (current + 1) % slides.length;
+    showSlide(next);
+  }, 4000);
+
 });
-
-const dots = document.querySelectorAll('.dot');
-
-function showSlide(index) {
-  // 前のスライド消す
-  slides[current].classList.remove('active');
-
-  // dotsが存在する場合だけ
-  if (dots[current]) {
-    dots[current].classList.remove('active');
-  }
-
-  // 更新
-  current = index;
-
-  // 新しいスライド表示
-  slides[current].classList.add('active');
-
-  if (dots[current]) {
-    dots[current].classList.add('active');
-  }
-}
-
-setInterval(() => {
-  let next = (current + 1) % slides.length;
-  showSlide(next);
-}, 4000);
 </script>
 
 </body>
