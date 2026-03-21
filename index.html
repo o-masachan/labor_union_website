@@ -1,73 +1,164 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>労働組合サイトテンプレート</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-  <h1>○○労働組合</h1>
-  <p>働く人の安心と未来のために</p>
-</header>
-
-<nav>
-  <button class="menu-toggle">☰</button>
-  <ul class="nav-list">
-    <li><a href="#">トップ</a></li>
-    <li><a href="#">組合について</a></li>
-    <li><a href="#">活動内容</a></li>
-    <li><a href="#">お知らせ</a></li>
-    <li><a href="#">お問い合わせ</a></li>
-  </ul>
-</nav>
-
-<!-- 画像スライダー -->
-<div class="slider">
-  <div class="slides">
-    <img src="https://via.placeholder.com/1200x400?text=Slide1" class="slide active">
-    <img src="https://via.placeholder.com/1200x400?text=Slide2" class="slide">
-    <img src="https://via.placeholder.com/1200x400?text=Slide3" class="slide">
-  </div>
+<div class="top-bar">
+  <div class="container">働く人の安心と未来のために</div>
 </div>
 
-<div class="main">
+<header class="header container">
+  <div class="logo">○○労働組合</div>
+</header>
+
+<nav class="nav">
+  <div class="container">
+    <button class="menu-toggle">☰</button>
+    <ul class="nav-list">
+      <li><a href="#">トップ</a></li>
+      <li><a href="#">組合について</a></li>
+      <li><a href="#">活動内容</a></li>
+      <li><a href="#">お知らせ</a></li>
+      <li><a href="#">福利厚生</a></li>
+      <li><a href="#">お問い合わせ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- パンくず -->
+<div class="breadcrumb container">
+  トップ ＞ お知らせ
+</div>
+
+<!-- スライダー -->
+<div class="slider">
+  <img src="https://via.placeholder.com/1200x400/cc0000/ffffff?text=Union+1" class="slide active">
+  <img src="https://via.placeholder.com/1200x400/999999/ffffff?text=Union+2" class="slide">
+  <img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Union+3" class="slide">
+  <div class="dots"></div>
+</div>
+
+<div class="container main">
+
   <div class="content">
 
-    <div class="section">
-      <h2>最新のお知らせ</h2>
+    <section class="section">
+      <h2 class="section-title">お知らせ</h2>
       <div class="news-cards">
+
         <div class="card">
+          <span class="badge">NEW</span>
           <p class="date">2026/03/01</p>
           <h3>組合大会を開催しました</h3>
+          <p>多くの組合員が参加し、今後の方針を確認しました。</p>
         </div>
+
         <div class="card">
           <p class="date">2026/02/15</p>
           <h3>春闘に向けた取り組みについて</h3>
+          <p>賃上げ交渉に向けた活動を開始しました。</p>
         </div>
+
         <div class="card">
           <p class="date">2026/02/01</p>
           <h3>福利厚生制度の見直し</h3>
+          <p>より働きやすい環境づくりを進めています。</p>
         </div>
+
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>活動内容</h2>
-      <p>労働条件の改善や福利厚生の充実に向けて活動しています。</p>
-    </div>
+    <section class="section">
+      <h2 class="section-title">活動内容</h2>
+      <div class="activity-grid">
+        <div class="activity-box">労働条件の改善</div>
+        <div class="activity-box">福利厚生の充実</div>
+        <div class="activity-box">相談・サポート</div>
+      </div>
+    </section>
 
-    <div class="section">
-      <h2>組合からのメッセージ</h2>
-      <p>安心して働ける環境づくりを目指します。</p>
-    </div>
+    <section class="section">
+      <h2 class="section-title">お問い合わせ</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="お名前">
+        <input type="email" placeholder="メールアドレス">
+        <textarea placeholder="お問い合わせ内容"></textarea>
+        <button type="submit">送信</button>
+      </form>
+    </section>
 
   </div>
 
   <aside class="sidebar">
-    <h3>関連リンク</h3>
-    <ul>
-      <li><a href="#">規約</a></li>
+
+    <div class="side-box">
+      <h3>メニュー</h3>
+      <ul>
+        <li><a href="#">加入案内</a></li>
+        <li><a href="#">規約</a></li>
+        <li><a href="#">資料ダウンロード</a></li>
+      </ul>
+    </div>
+
+    <div class="side-box">
+      <h3>関連情報</h3>
+      <p>各種制度・お知らせを掲載</p>
+    </div>
+
+  </aside>
+
+</div>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>○○労働組合</div>
+    <div>
+      <a href="#">プライバシーポリシー</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// メニュー
+const toggle = document.querySelector('.menu-toggle');
+const navList = document.querySelector('.nav-list');
+toggle.addEventListener('click', () => navList.classList.toggle('active'));
+
+// スライダー
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.querySelector('.dots');
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => showSlide(i));
+  dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = index;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+
+setInterval(() => {
+  let next = (current + 1) % slides.length;
+  showSlide(next);
+}, 4000);
+</script>
+
+</body>
 </html>
